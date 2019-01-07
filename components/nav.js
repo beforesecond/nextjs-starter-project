@@ -14,6 +14,7 @@ const links = [
 class Nav extends Component {
   componentDidMount() {
     dispatch(todoAction.fetchPosts({}))
+    const unsubscribe = store.subscribe(() => console.log(store.getState()))
   }
 
   render() {
