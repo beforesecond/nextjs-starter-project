@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import Link from 'next/link'
-import Store from '../store'
+import store from '../store'
+import * as todoAction from '../actions/todo'
 
+const { dispatch } = store
 const links = [
   { href: 'https://github.com/segmentio/create-next-app', label: 'Github' }
 ].map(link => {
@@ -11,7 +13,7 @@ const links = [
 
 class Nav extends Component {
   componentDidMount() {
-    Store.GetTodo({ test: 'test' })
+    dispatch(todoAction.fetchPosts({}))
   }
 
   render() {

@@ -20,7 +20,7 @@ const todo = (state = initialState, action) => {
     case Action.GET_TODO_SUCCESS:
       return {
         ...state,
-        data,
+        data: action.payload,
         isLoading: false,
         isError: false,
         hasData: true
