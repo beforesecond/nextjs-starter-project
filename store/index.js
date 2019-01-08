@@ -8,6 +8,6 @@ if (process.env.NODE_ENV !== 'production') {
   middleware.push(createLogger())
 }
 
-const store = createStore(reducers, applyMiddleware(...middleware))
+const Store = () => createStore(reducers, applyMiddleware(...middleware))
 
-export default store
+export default Store

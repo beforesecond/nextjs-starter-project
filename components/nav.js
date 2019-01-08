@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import Link from 'next/link'
-import store from '../store'
-import * as todoAction from '../actions/todo'
+import { fetchPosts } from '../actions/todo'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
-const { dispatch } = store
 const links = [
   { href: 'https://github.com/segmentio/create-next-app', label: 'Github' }
 ].map(link => {
@@ -13,8 +13,7 @@ const links = [
 
 class Nav extends Component {
   componentDidMount() {
-    dispatch(todoAction.fetchPosts({}))
-    const unsubscribe = store.subscribe(() => console.log(store.getState()))
+    this.props.fetchPosts()
   }
 
   render() {
@@ -68,4 +67,10 @@ class Nav extends Component {
   }
 }
 
-export default Nav
+const mapDispatchToProps = dispatch => ({
+  fetchPosts: bindActionCreators(fetchPosts, dispatch)
+})
+export default connect(
+  null,
+  mapDispatchToProps
+)(Nav)
