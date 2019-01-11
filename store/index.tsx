@@ -8,11 +8,11 @@ import { initialState } from '../reducers'
 const sagaMiddleware = createSagaMiddleware()
 
 const stateLogger = createLogger({
-  stateTransformer: state => state
+  stateTransformer: (state: any) => state
 })
 
 export const Store = (preloadState = initialState) => {
-  const store = createStore(
+  const store: any = createStore(
     reducers,
     preloadState,
     applyMiddleware(sagaMiddleware, stateLogger)

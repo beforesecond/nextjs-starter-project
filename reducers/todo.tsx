@@ -7,7 +7,7 @@ const initialState = {
   hasData: false
 }
 
-const todo = (state = initialState, action) => {
+const todo = (state = initialState, action: any) => {
   switch (action.type) {
     case Action.GET_TODO:
       return {

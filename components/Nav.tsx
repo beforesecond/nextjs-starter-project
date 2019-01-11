@@ -67,7 +67,7 @@ class Nav extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch: any) => ({
   fetchPosts: bindActionCreators(todoAction.getTodo, dispatch)
 })
 

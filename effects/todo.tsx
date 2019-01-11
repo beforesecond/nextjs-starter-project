@@ -2,7 +2,7 @@ import { all, call, put, takeLatest, takeEvery } from 'redux-saga/effects'
 import * as todoAction from '../actions/todo'
 import { api } from '../api'
 
-export function* fetchData(action) {
+export function* fetchData(action: any) {
   try {
     const { payload } = action
     const res = yield api(

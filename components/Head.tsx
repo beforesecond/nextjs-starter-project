@@ -7,7 +7,7 @@ const defaultDescription = ''
 const defaultOGURL = ''
 const defaultOGImage = ''
 
-const Head = props => (
+const Head = (props: any) => (
   <NextHead>
     <meta charSet="UTF-8" />
     <title>{props.title || ''}</title>
@@ -43,7 +43,7 @@ Head.propTypes = {
   ogImage: string
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state: any) => ({
   todo: state.todo
 })
 

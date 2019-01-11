@@ -28,6 +28,6 @@ class MyApp extends App {
 }
 
 export default withRedux(Store, {
-  serializeState: state => state,
-  deserializeState: state => fromJS(state)
+  serializeState: (state: any) => state,
+  deserializeState: (state: any) => fromJS(state)
 })(withReduxSaga({ async: true })(MyApp))

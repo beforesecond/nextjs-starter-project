@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export function api(url, method) {
+export function api(url: string, method: string) {
   return axios({
     method: method,
     url: url
