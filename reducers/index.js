@@ -1,8 +1,11 @@
 import { combineReducers } from 'redux'
+import { fromJS } from 'immutable'
 import todo from './todo'
 
-const reducers = combineReducers({
-  todo
+export const initialState = fromJS({
+  todo: todo
 })
 
-export default reducers
+export const reducers = combineReducers({
+  todo: todo
+})

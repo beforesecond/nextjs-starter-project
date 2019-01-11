@@ -1,8 +1,10 @@
 import React from 'react'
 import withRedux from 'next-redux-wrapper'
+import withReduxSaga from 'next-redux-saga'
 import Store from '../store'
 import App, { Container } from 'next/app'
 import { Provider } from 'react-redux'
+import { fromJS } from 'immutable'
 
 class MyApp extends App {
   static async getInitialProps({ Component, router, ctx }) {
@@ -25,4 +27,7 @@ class MyApp extends App {
   }
 }
 
-export default withRedux(Store)(MyApp)
+export default withRedux(Store, {
+  serializeState: state => state,
+  deserializeState: state => fromJS(state)
+})(withReduxSaga({ async: true })(MyApp))

@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import Link from 'next/link'
-import { fetchPosts } from '../actions/todo'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import * as todoAction from '../actions/todo'
 
 const links = [
   { href: 'https://github.com/segmentio/create-next-app', label: 'Github' }
@@ -13,7 +13,7 @@ const links = [
 
 class Nav extends Component {
   componentDidMount() {
-    this.props.fetchPosts()
+    this.props.fetchPosts({ test: 'test' })
   }
 
   render() {
@@ -68,8 +68,9 @@ class Nav extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  fetchPosts: bindActionCreators(fetchPosts, dispatch)
+  fetchPosts: bindActionCreators(todoAction.getTodo, dispatch)
 })
+
 export default connect(
   null,
   mapDispatchToProps

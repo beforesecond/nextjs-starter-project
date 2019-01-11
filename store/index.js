@@ -1,13 +1,25 @@
 import { createStore, applyMiddleware } from 'redux'
-import thunk from 'redux-thunk'
-import reducers from '../reducers'
+import { reducers } from '../reducers'
 import { createLogger } from 'redux-logger'
+import createSagaMiddleware from 'redux-saga'
+import rootEffect from '../effects'
+import { initialState } from '../reducers'
 
-const middleware = [thunk]
-if (process.env.NODE_ENV !== 'production') {
-  middleware.push(createLogger())
+const sagaMiddleware = createSagaMiddleware()
+
+const stateLogger = createLogger({
+  stateTransformer: state => state
+})
+
+export const Store = (preloadState = initialState) => {
+  const store = createStore(
+    reducers,
+    preloadState,
+    applyMiddleware(sagaMiddleware, stateLogger)
+  )
+
+  store.sagaTask = sagaMiddleware.run(rootEffect)
+  return store
 }
-
-const Store = () => createStore(reducers, applyMiddleware(...middleware))
 
 export default Store
