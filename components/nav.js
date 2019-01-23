@@ -12,9 +12,9 @@ const links = [
 })
 
 class Nav extends Component {
-  componentDidMount() {
-    this.props.fetchPosts({ test: 'test' })
-  }
+  // componentDidMount() {
+  //   this.props.fetchPosts({ test: 'test' })
+  // }
 
   render() {
     return (
@@ -67,11 +67,13 @@ class Nav extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  fetchPosts: bindActionCreators(todoAction.getTodo, dispatch)
-})
+export default Nav
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(Nav)
+// const mapDispatchToProps = dispatch => ({
+//   fetchPosts: bindActionCreators(todoAction.getTodo, dispatch)
+// })
+
+// export default connect(
+//   null,
+//   mapDispatchToProps
+// )(Nav)

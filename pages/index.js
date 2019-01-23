@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import Head from '../components/head'
 import Nav from '../components/nav'
+import Login from '../components/login'
 
 const Home = () => (
   <div>
@@ -13,7 +14,7 @@ const Home = () => (
       <p className="description">
         To get started, edit <code>pages/index.js</code> and save to reload.
       </p>
-
+      <Login />
       <div className="row">
         <Link href="https://github.com/zeit/next.js#getting-started">
           <a className="card">
